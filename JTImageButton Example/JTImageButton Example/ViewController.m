@@ -74,7 +74,9 @@
     self.btnFive.borderColor = flatOrangeColor;
     self.btnFive.iconSide = JTImageButtonIconSideLeft;
     self.btnFive.touchEffectEnabled = true;
-    self.btnFive.bgColorSelected = [UIColor whiteColor];
+    self.btnFive.bgColorHighlighted = [UIColor whiteColor];
+    self.btnFive.titleColorHighlighted = [UIColor blackColor];
+    self.btnFive.borderColor = [UIColor blueColor];
     
     // JTImageButton programatically
 //    JTImageButton *btn = [[JTImageButton alloc] initWithFrame:CGRectMake(10, 50, 300, 50)];

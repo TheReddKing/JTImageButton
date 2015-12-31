@@ -29,6 +29,7 @@ typedef enum {
  The title color of the button represented as a UIColor. The default title color is orange.
  */
 @property (nonatomic, strong) UIColor *titleColor;
+@property (nonatomic, strong) UIColor *titleColorHighlighted;
 
 /**
  Icon should be overlayed with color. The default iconColor is nil. Final image quality could be different.
@@ -39,7 +40,7 @@ typedef enum {
  The background color of the button repreented as a UIColor. The default title color is clear.
  */
 @property (nonatomic, strong) UIColor *bgColor;
-@property (nonatomic, strong) UIColor *bgColorSelected;
+@property (nonatomic, strong) UIColor *bgColorHighlighted;
 /**
  Horizontal padding between title and icon. The default cornerRadius is JTImageButtonPaddingSmall.
  */
@@ -54,6 +55,7 @@ typedef enum {
  The border color of the button represented as a UIColor. The default border color is orange.
  */
 @property (nonatomic, strong) UIColor *borderColor;
+@property (nonatomic, strong) UIColor *borderColorHighlighted;
 
 /**
  The border width of the button represented as a float. The default border width is 1.0f.

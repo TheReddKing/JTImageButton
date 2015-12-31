@@ -111,6 +111,10 @@
     
     // Create whole title
     [self setAttributedTitle:[self createStringWithImage:_iconImage string:_titleText color:_titleColor iconPosition:_iconSide padding:_padding andIconOffsetY:_iconOffsetY] forState:UIControlStateNormal];
+    
+    if (_titleColorHighlighted != nil) {
+        [self setAttributedTitle:[self createStringWithImage:_iconImage string:_titleText color:_titleColorHighlighted iconPosition:_iconSide padding:_padding andIconOffsetY:_iconOffsetY] forState:UIControlStateHighlighted];
+    }
     [self setNeedsLayout];
     
     [self layoutIfNeeded];
@@ -127,11 +131,14 @@
 
 #pragma mark - Touch effect
 - (void)applyTouchEffect {
-    if(_bgColorSelected != nil) {
-        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            [self setBackgroundColor:_bgColorSelected];
-        } completion:nil];
-    }
+    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        if(_bgColorHighlighted != nil) {
+            [self setBackgroundColor:_bgColorHighlighted];
+        }
+        if(_borderColorHighlighted!= nil) {
+            [self.layer setBorderColor:_borderColorHighlighted.CGColor];
+        }
+    } completion:nil];
     if (_touchEffectEnabled) {
         [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.transform = CGAffineTransformMakeScale(1.05, 1.05);
@@ -140,11 +147,14 @@
 }
 
 - (void)dismissTouchEffect {
-    if(_bgColorSelected != nil) {
-        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        if(_bgColorHighlighted != nil) {
             [self setBackgroundColor:_bgColor];
-        } completion:nil];
-    }
+        }
+        if(_borderColorHighlighted!= nil) {
+            [self.layer setBorderColor:_borderColor.CGColor];
+        }
+    } completion:nil];
     
     if (_touchEffectEnabled) {
         [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
@@ -324,6 +334,10 @@
 
 - (void)setBgColor:(UIColor *)bgColor {
     _bgColor = bgColor;
+    [self initialize];
+}
+- (void)setTitleColorHighlighted:(UIColor *)titleColorHighlighted {
+    _titleColorHighlighted = titleColorHighlighted;
     [self initialize];
 }
 
