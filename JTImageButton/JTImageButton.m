@@ -131,7 +131,7 @@
 
 #pragma mark - Touch effect
 - (void)applyTouchEffect {
-    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut |UIViewAnimationOptionAllowUserInteraction  animations:^{
         if(_bgColorHighlighted != nil) {
             [self setBackgroundColor:_bgColorHighlighted];
         }
@@ -140,14 +140,14 @@
         }
     } completion:nil];
     if (_touchEffectEnabled) {
-        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut |UIViewAnimationOptionAllowUserInteraction animations:^{
             self.transform = CGAffineTransformMakeScale(1.05, 1.05);
         } completion:nil];
     }
 }
 
 - (void)dismissTouchEffect {
-    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut |UIViewAnimationOptionAllowUserInteraction animations:^{
         if(_bgColorHighlighted != nil) {
             [self setBackgroundColor:_bgColor];
         }
@@ -157,7 +157,7 @@
     } completion:nil];
     
     if (_touchEffectEnabled) {
-        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut |UIViewAnimationOptionAllowUserInteraction animations:^{
             self.transform = CGAffineTransformMakeScale(1.0, 1.0);
         } completion:nil];
     }
