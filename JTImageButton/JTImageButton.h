@@ -39,7 +39,7 @@ typedef enum {
  The background color of the button repreented as a UIColor. The default title color is clear.
  */
 @property (nonatomic, strong) UIColor *bgColor;
-
+@property (nonatomic, strong) UIColor *bgColorSelected;
 /**
  Horizontal padding between title and icon. The default cornerRadius is JTImageButtonPaddingSmall.
  */

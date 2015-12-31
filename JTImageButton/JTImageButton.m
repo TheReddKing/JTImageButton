@@ -127,6 +127,11 @@
 
 #pragma mark - Touch effect
 - (void)applyTouchEffect {
+    if(_bgColorSelected != nil) {
+        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self setBackgroundColor:_bgColorSelected];
+        } completion:nil];
+    }
     if (_touchEffectEnabled) {
         [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.transform = CGAffineTransformMakeScale(1.05, 1.05);
@@ -135,6 +140,12 @@
 }
 
 - (void)dismissTouchEffect {
+    if(_bgColorSelected != nil) {
+        [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self setBackgroundColor:_bgColor];
+        } completion:nil];
+    }
+    
     if (_touchEffectEnabled) {
         [UIView animateWithDuration:0.1 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.transform = CGAffineTransformMakeScale(1.0, 1.0);
